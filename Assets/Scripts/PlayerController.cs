@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
      //   float posX = Input.gyro.attitude.x;
      //   float posY = Input.gyro.attitude.y;
-
         float posX = Input.acceleration.x;
         float posY = Input.acceleration.y;
         Direction = new Vector3(posX*5, posY*5, speed);
