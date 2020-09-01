@@ -8,10 +8,13 @@ public class PlayerController : MonoBehaviour
     private Vector3 Direction = Vector3.zero;
     public float speed = 5.0f;
     public float accelerationSpeed = 50.0f;
+    private Vector3 Init = Vector3.zero;
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        Init.x = Input.acceleration.x;
+        Init.y = Input.acceleration.y;
         //Input.gyro.enabled = true;
     }
 
@@ -19,12 +22,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-     //   float posX = Input.gyro.attitude.x;
-     //   float posY = Input.gyro.attitude.y;
+        // float posX = Input.gyro.attitude.x;
+        // float posY = Input.gyro.attitude.y;
 
-        float posX = Input.acceleration.x;
-        float posY = Input.acceleration.y;
-        Direction = new Vector3(posX*accelerationSpeed, posY*accelerationSpeed, speed);
-        controller.Move(Direction*Time.deltaTime);
+        float posX = Input.GetAxis("Horizontal");
+        float posY = Input.GetAxis("Vertical");
+
+        //float posX = Input.acceleration.x - Init.x;
+        //float posY = Input.acceleration.y - Init.y;
+
+        Direction = new Vector3(posX * accelerationSpeed, posY * accelerationSpeed, speed);
+        controller.Move(Direction * Time.deltaTime);
     }
 }
