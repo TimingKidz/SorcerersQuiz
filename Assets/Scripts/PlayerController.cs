@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 Direction = Vector3.zero;
     public float speed = 5.0f;
+    public float accelerationSpeed = 50.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour
      //   float posY = Input.gyro.attitude.y;
         float posX = Input.acceleration.x;
         float posY = Input.acceleration.y;
-        Direction = new Vector3(posX*5, posY*5, speed);
+        Direction = new Vector3(posX*accelerationSpeed, posY*accelerationSpeed, speed);
         controller.Move(Direction*Time.deltaTime);
     }
 }
