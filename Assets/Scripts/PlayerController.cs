@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 Direction = Vector3.zero;
     public float speed = 5.0f;
-    public float accelerationSpeed = 10.0f;
+    public float accelerationSpeed = 100.0f;
     private Vector3 Init = Vector3.zero;
     // Start is called before the first frame update
     void Start()

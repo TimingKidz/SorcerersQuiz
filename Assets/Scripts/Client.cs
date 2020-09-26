@@ -21,6 +21,8 @@ public class Client : SocketIOComponent
         base.Start();
         Initialize();
         setupEvents();
+     
+
     }
 
     // Update is called once per frame
@@ -44,9 +46,14 @@ public class Client : SocketIOComponent
 
         On("spawn", (E) =>
         {
-            Debug.Log(E.data.ToString());
+            
             string id = E.data["id"].ToString();
             var playerObject = Instantiate(playerPrefeb, networkContianer);
+            if( id == ClientId)
+            {
+                playerObject.AddComponent<PlayerController>();
+                playerObject.AddComponent<Camera>();
+            }
             playerObject.name = id;
             NetworkIdentity networkIdentity = playerObject.GetComponent<NetworkIdentity>();
             networkIdentity.SetControllerID(id);
@@ -62,7 +69,6 @@ public class Client : SocketIOComponent
             float x = E.data["posX"].f;
             float y = E.data["posY"].f;
             float z = E.data["posZ"].f;
-       
             NetworkIdentity networkIdentity = serverObjects[id];
             
             networkIdentity.transform.position = new Vector3(x, y, z);
@@ -73,6 +79,7 @@ public class Client : SocketIOComponent
     public void Initialize()
     {
         serverObjects = new Dictionary<string, NetworkIdentity>();
+
     }
 }
 
