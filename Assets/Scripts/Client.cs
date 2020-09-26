@@ -44,6 +44,7 @@ public class Client : SocketIOComponent
 
         On("spawn", (E) =>
         {
+            Debug.Log(E.data.ToString());
             string id = E.data["id"].ToString();
             var playerObject = Instantiate(playerPrefeb, networkContianer);
             playerObject.name = id;
@@ -61,7 +62,7 @@ public class Client : SocketIOComponent
             float x = E.data["posX"].f;
             float y = E.data["posY"].f;
             float z = E.data["posZ"].f;
-            Debug.Log(E.data.ToString());
+       
             NetworkIdentity networkIdentity = serverObjects[id];
             
             networkIdentity.transform.position = new Vector3(x, y, z);
