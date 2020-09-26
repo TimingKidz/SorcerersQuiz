@@ -12,7 +12,6 @@ public class Client : SocketIOComponent
     [SerializeField]
     private Transform networkContianer;
     public static string ClientId;
-
     [SerializeField]
     private GameObject playerPrefeb;
     private Dictionary<string, NetworkIdentity> serverObjects;
@@ -48,18 +47,30 @@ public class Client : SocketIOComponent
         {
             
             string id = E.data["id"].ToString();
+           
             var playerObject = Instantiate(playerPrefeb, networkContianer);
-            if( id == ClientId)
-            {
-                playerObject.AddComponent<PlayerController>();
-                playerObject.AddComponent<Camera>();
-            }
             playerObject.name = id;
             NetworkIdentity networkIdentity = playerObject.GetComponent<NetworkIdentity>();
             networkIdentity.SetControllerID(id);
             networkIdentity.SetSocketComponentReference(this);
             playerObject.transform.SetParent(networkContianer);
             serverObjects.Add(id, networkIdentity);
+            if (id == ClientId)
+            {
+                
+                playerObject.AddComponent<PlayerController>();
+                string a = "[sever object parent]/" + ClientId + "/Camera";
+                Debug.Log(a);
+                GameObject cam = GameObject.Find(a);
+
+                cam.SetActive(true);
+
+                /*     Camera cam = new Camera();
+                     cam.transform.position = new Vector3(0, 4.76f, -6.76f);*/
+                /* cam.transform.parent = playerObject.transform;*/
+
+
+            }
 
         });
 
