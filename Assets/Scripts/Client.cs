@@ -87,6 +87,7 @@ public class Client : SocketIOComponent
             float y = E.data["posY"].f;
             float z = E.data["posZ"].f;
             float ry = E.data["roY"].f;
+            Debug.Log(ry);
             GameObject networkIdentity = serverObjects[id];
             networkIdentity.transform.position = new Vector3(x, y, z);
             networkIdentity.transform.eulerAngles = new Vector3(0, ry, 0);
