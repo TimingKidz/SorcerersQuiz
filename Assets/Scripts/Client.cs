@@ -34,10 +34,6 @@ public class Client : SocketIOComponent
 
     private void setupEvents()
     {
-
-       
-
-
         On("open", (E) =>
          {
              Debug.Log("EiEi");
@@ -90,8 +86,10 @@ public class Client : SocketIOComponent
             float x = E.data["posX"].f;
             float y = E.data["posY"].f;
             float z = E.data["posZ"].f;
+            float ry = E.data["roY"].f;
             GameObject networkIdentity = serverObjects[id];
             networkIdentity.transform.position = new Vector3(x, y, z);
+            networkIdentity.transform.Rotate(0, ry, 0);
 
         });
 
