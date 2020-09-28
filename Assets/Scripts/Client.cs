@@ -89,7 +89,7 @@ public class Client : SocketIOComponent
             float ry = E.data["roY"].f;
             GameObject networkIdentity = serverObjects[id];
             networkIdentity.transform.position = new Vector3(x, y, z);
-            networkIdentity.transform.Rotate(0, ry, 0);
+            networkIdentity.transform.eulerAngles = new Vector3(0, ry, 0);
 
         });
 
