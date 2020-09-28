@@ -54,7 +54,7 @@ public class NetworkTranform : MonoBehaviour
         player.posX = Mathf.Round(transform.position.x * 1000.0f) / 1000.0f;
         player.posY = Mathf.Round(transform.position.y * 1000.0f) / 1000.0f;
         player.posZ = Mathf.Round(transform.position.z * 1000.0f) / 1000.0f;
-        player.posY = Mathf.Round(transform.rotation.y * 1000.0f) / 1000.0f;
+        player.roY = Mathf.Round(transform.rotation.y * 1000.0f) / 1000.0f;
 
         networkIdentity.GetIsSocket().Emit("updatepos", new JSONObject(JsonUtility.ToJson(player)));
     }
