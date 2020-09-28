@@ -14,13 +14,13 @@ public class Client : SocketIOComponent
     public static string ClientId;
     [SerializeField]
     private GameObject playerPrefeb;
-    private Dictionary<string, NetworkIdentity> serverObjects;
+    private Dictionary<string, GameObject> serverObjects;
+    private Dictionary<string, NetworkIdentity> serverNet;
     public override void Start()
     {
         base.Start();
         Initialize();
         setupEvents();
-     
 
     }
 
@@ -29,49 +29,59 @@ public class Client : SocketIOComponent
     {
         base.Update();
     }
+  /*  this.Emit();*/
+
 
     private void setupEvents()
     {
+
+       
+
+
         On("open", (E) =>
          {
              Debug.Log("EiEi");
+            
          });
 
+        On("Initail", (E) =>
+         {
+             this.Emit("xx", new JSONObject(JsonUtility.ToJson(new test())));
+         });
+        
+        
         On("register", (E) =>
          {
              ClientId = E.data["id"].ToString();
              Debug.Log(ClientId);
+             
          });
 
         On("spawn", (E) =>
         {
-            
             string id = E.data["id"].ToString();
-           
             var playerObject = Instantiate(playerPrefeb, networkContianer);
             playerObject.name = id;
             NetworkIdentity networkIdentity = playerObject.GetComponent<NetworkIdentity>();
             networkIdentity.SetControllerID(id);
             networkIdentity.SetSocketComponentReference(this);
             playerObject.transform.SetParent(networkContianer);
-            serverObjects.Add(id, networkIdentity);
-            if (id == ClientId)
+            serverObjects.Add(id, playerObject);
+            serverNet.Add(id, networkIdentity);
+
+            if (networkIdentity.GetIsControlling())
             {
-                
-                playerObject.AddComponent<PlayerController>();
                 string a = "[sever object parent]/" + ClientId + "/Camera";
-                Debug.Log(a);
                 GameObject cam = GameObject.Find(a);
-
                 cam.SetActive(true);
-
-                /*     Camera cam = new Camera();
-                     cam.transform.position = new Vector3(0, 4.76f, -6.76f);*/
-                /* cam.transform.parent = playerObject.transform;*/
-
-
             }
 
+        });
+
+        On("MatchReady", (E) =>
+        {
+            GameObject tmp = GameObject.Find(ClientId);
+            tmp.AddComponent<PlayerController>();
         });
 
         On("updatepos", (E) =>
@@ -80,18 +90,26 @@ public class Client : SocketIOComponent
             float x = E.data["posX"].f;
             float y = E.data["posY"].f;
             float z = E.data["posZ"].f;
-            NetworkIdentity networkIdentity = serverObjects[id];
-            
+            GameObject networkIdentity = serverObjects[id];
             networkIdentity.transform.position = new Vector3(x, y, z);
 
         });
+
     }
 
     public void Initialize()
     {
-        serverObjects = new Dictionary<string, NetworkIdentity>();
+        serverObjects = new Dictionary<string, GameObject>();
+        serverNet = new Dictionary<string, NetworkIdentity>();
 
     }
 }
 
 
+
+[Serializable]
+public class test
+{
+    public string text = "eiei";
+   
+}
