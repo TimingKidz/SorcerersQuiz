@@ -62,8 +62,10 @@ public class Client : SocketIOComponent
             networkIdentity.SetControllerID(id);
             networkIdentity.SetSocketComponentReference(this);
             playerObject.transform.SetParent(networkContianer);
+            playerObject.transform.position = new Vector3(E.data["posX"].f,E.data["posY"].f, E.data["posZ"].f);
             serverObjects.Add(id, playerObject);
             serverNet.Add(id, networkIdentity);
+
 
             if (networkIdentity.GetIsControlling())
             {
@@ -78,6 +80,7 @@ public class Client : SocketIOComponent
         {
             GameObject tmp = GameObject.Find(ClientId);
             tmp.AddComponent<PlayerController>();
+            
         });
 
         On("updatepos", (E) =>
