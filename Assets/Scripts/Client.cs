@@ -19,7 +19,7 @@ public class Client : SocketIOComponent
     private Dictionary<string, GameObject> serverObjects;
     private Dictionary<string, NetworkIdentity> serverNet;
 
-    public ArrayList Quiz;
+    public List<List<string>> Quiz;
 
     public override void Start()
     {
@@ -85,20 +85,32 @@ public class Client : SocketIOComponent
         {
             GameObject tmp = GameObject.Find(ClientId);
             JSONObject quiz = E.data["Quiz"];
-            ArrayList listQ = new ArrayList();
+            List<List<string>> listQ = new List<List<string>>(); 
+            List<string> listinQ = new List<string>();
             int  i = 0;
+            int j = 0;
             while (true)
             {
-                
-                if(quiz[i] == null)
+                j = 0;
+                listinQ = new List<string>();
+                if (quiz[i] == null)
                 {
                     break;
                 }
-                listQ.Add(quiz[i]);
+                while (true)
+                {
+                    if (quiz[i][j] == null)
+                    {
+                        break;
+                    }
+                    listinQ.Add(quiz[i][j].ToString());
+                    j++;
+                }
+                listQ.Add(listinQ); 
                 i++;
             }
             Quiz = listQ;
-            Debug.Log(Quiz[0]);
+            Debug.Log(Quiz[0][0]);
             tmp.AddComponent<PlayerController>();
             
         });
