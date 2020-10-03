@@ -16,9 +16,9 @@ public class NetworkTranform : MonoBehaviour
         networkIdentity = GetComponent<NetworkIdentity>();
         oldPos = transform.position;
         player = new Player();
-        player.posX = -78;
-        player.posY = 16;
-        player.posZ = -5;
+        player.posX = 0;
+        player.posY = 0;
+        player.posZ = 0;
 
         if(!networkIdentity.GetIsControlling())
         {
