@@ -98,6 +98,7 @@ public class Client : SocketIOComponent
                 i++;
             }
             Quiz = listQ;
+            Debug.Log(Quiz[0]);
             tmp.AddComponent<PlayerController>();
             
         });
