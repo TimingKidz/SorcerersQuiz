@@ -1596,7 +1596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1776a974a277240948c821bafae720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url: ws://10.80.26.197:4567/socket.io/?EIO=4&transport=websocket
+  url: ws://10.10.10.19:4567/socket.io/?EIO=4&transport=websocket
   autoConnect: 1
   reconnectDelay: 5
   ackExpirationTime: 1800
@@ -2362,7 +2362,7 @@ PrefabInstance:
     - target: {fileID: 5249010103149941721, guid: da26de1f8d780914bbcc928215710210,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5249010103149941721, guid: da26de1f8d780914bbcc928215710210,
         type: 3}
