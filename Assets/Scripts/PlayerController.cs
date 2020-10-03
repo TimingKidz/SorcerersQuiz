@@ -25,11 +25,11 @@ public class PlayerController : MonoBehaviour
         // float posX = Input.gyro.attitude.x;
         // float posY = Input.gyro.attitude.y;
 
-        float posX = Input.GetAxis("Horizontal")*accelerationSpeed;
-        float posY = Input.GetAxis("Vertical")*accelerationSpeed;
+        /*   float posX = Input.GetAxis("Horizontal")*accelerationSpeed;
+           float posY = Input.GetAxis("Vertical")*accelerationSpeed;*/
 
-/*        float posX = Input.acceleration.x * accelerationSpeed;
-        float posY = Input.acceleration.y * accelerationSpeed;*/
+        float posX = Input.acceleration.x * accelerationSpeed;
+        float posY = Input.acceleration.y * accelerationSpeed;
 
         Direction = new Vector3(0,0, speed);
         //controller.Move(Direction * Time.deltaTime);
