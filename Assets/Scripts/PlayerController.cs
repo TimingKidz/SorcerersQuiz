@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 Direction = Vector3.zero;
-    public float speed = 5.0f;
+    public float speed = 10.0f;
     public float accelerationSpeed = 100.0f;
     private Vector3 Init = Vector3.zero;
     public bool isStunt = false;
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
             speed = 0.0f;
             if (Time.time >= currentTime + 5)
             {
-                speed = 5.0f;
+                speed = 10.0f;
                 isStunt = false;
             }
         }
