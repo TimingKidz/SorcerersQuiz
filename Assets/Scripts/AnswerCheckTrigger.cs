@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AnswerCheckTrigger : MonoBehaviour
 {
-    public GameObject Question;
     public GameObject gobj;
     public GameObject Q;
+    List<List<string>> A;
     Client client;
     QuestionTrigger QTrigger;
 
@@ -20,7 +20,10 @@ public class AnswerCheckTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (A == null)
+        {
+            A = client.Quiz;
+        }
     }
 
     void OnTriggerEnter(Collider obj)
@@ -28,7 +31,6 @@ public class AnswerCheckTrigger : MonoBehaviour
         if (obj.gameObject.CompareTag("Player"))
         {
             QTrigger.AnswerCheck(gameObject);
-            Question.SetActive(false);
         }
     }
 }

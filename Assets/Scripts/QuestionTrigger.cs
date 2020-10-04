@@ -8,34 +8,31 @@ public class QuestionTrigger : MonoBehaviour
     public GameObject Question;
     public GameObject gobj;
     public GameObject UI;
-    public GameObject stuntPlane;
-    public GameObject ansPlane;
-    public List<string> QT;
+    int QCount;
+    List<List<string>> Q;
+    Client client;
     GenerateQuestion genQ;
 
     // Start is called before the first frame update
     void Start()
     {
+        QCount = 0;
+        client = gobj.GetComponent<Client>();
         genQ = UI.GetComponent<GenerateQuestion>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (Q == null)
+        {
+            Q = client.Quiz;
+        }
     }
 
     public void AnswerCheck(GameObject obj)
     {
-        /*ansPlane.SetActive(false);*/
-        for (int i = 0; i < 4; i++)
-        {
-            if ((int.Parse(obj.name[3].ToString()) - 1).ToString() == QT[3])
-            {
-                stuntPlane.SetActive(false);
-                break;
-            }
-        }
+        
     }
 
     void OnTriggerEnter(Collider obj)
@@ -43,9 +40,8 @@ public class QuestionTrigger : MonoBehaviour
         if (obj.gameObject.CompareTag("Player"))
         {
             Question.SetActive(true);
-            ansPlane.SetActive(true);
-            stuntPlane.SetActive(true);
-            genQ.updateQ(QT);
+            Debug.Log(Q[QCount][0] + Q[QCount][1] + Q[QCount][2]);
+            genQ.updateQ(Q[QCount++]);
         }
     }
 }

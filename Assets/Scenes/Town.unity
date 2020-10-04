@@ -141,7 +141,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   accelerationSpeed: 100
-  isStunt: 0
 --- !u!114 &937597434
 MonoBehaviour:
   m_ObjectHideFlags: 0
