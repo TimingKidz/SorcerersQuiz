@@ -14,12 +14,15 @@ public class Client : SocketIOComponent
     [SerializeField]
     private Transform networkContianer;
     public static string ClientId;
+
     [SerializeField]
     private GameObject playerPrefeb;
     private Dictionary<string, GameObject> serverObjects;
     private Dictionary<string, NetworkIdentity> serverNet;
 
     public List<List<string>> Quiz;
+    public List<List<string>> Ans;
+    public List<List<string>> Pos;
 
     public override void Start()
     {
@@ -86,32 +89,12 @@ public class Client : SocketIOComponent
         {
             GameObject tmp = GameObject.Find(ClientId);
             JSONObject quiz = E.data["Quiz"];
-            List<List<string>> listQ = new List<List<string>>(); 
-            List<string> listinQ = new List<string>();
-            int  i = 0;
-            int j = 0;
-            while (true)
-            {
-                j = 0;
-                listinQ = new List<string>();
-                if (quiz[i] == null)
-                {
-                    break;
-                }
-                while (true)
-                {
-                    if (quiz[i][j] == null)
-                    {
-                        break;
-                    }
-                    listinQ.Add(quiz[i][j].ToString());
-                    j++;
-                }
-                listQ.Add(listinQ); 
-                i++;
-            }
-            Quiz = listQ;
-            Debug.Log(Quiz[0][0]);
+            JSONObject ans = E.data["Ans"];
+            JSONObject pos = E.data["Pos"];
+            Quiz = JsonTOArray(quiz);
+            Ans = JsonTOArray(ans);
+            Pos = JsonTOArray(pos);
+
             tmp.AddComponent<PlayerController>();
             
         });
@@ -132,6 +115,35 @@ public class Client : SocketIOComponent
 
         });
 
+    }
+
+    public List<List<string>> JsonTOArray(JSONObject obj)
+    {
+        List<List<string>> temp1 = new List<List<string>>();
+        List<string> temp2 = new List<string>();
+        int i = 0;
+        int j = 0;
+        while (true)
+        {
+            j = 0;
+            temp2 = new List<string>();
+            if (obj[i] == null)
+            {
+                break;
+            }
+            while (true)
+            {
+                if (obj[i][j] == null)
+                {
+                    break;
+                }
+                temp2.Add(obj[i][j].ToString());
+                j++;
+            }
+            temp1.Add(temp2);
+            i++;
+        }
+        return temp1;
     }
 
     public void Initialize()
