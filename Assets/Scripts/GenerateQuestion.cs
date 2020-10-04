@@ -58,7 +58,7 @@ public class GenerateQuestion : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            Debug.Log(round);
+            /*Debug.Log(round);*/
             int index = ((round - 1) * 5) + i;
             for (int j = 0; j < 4; j++)
             {
