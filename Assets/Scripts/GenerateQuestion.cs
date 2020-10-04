@@ -6,6 +6,7 @@ using TMPro;
 
 public class GenerateQuestion : MonoBehaviour
 {
+    public GameObject chkRound;
     public GameObject gobj;
     public Text Fnum;
     public Text Snum;
@@ -21,13 +22,20 @@ public class GenerateQuestion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        round = 0;
         client = gobj.GetComponent<Client>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (chkRound.GetComponent<CheckRound>().round != 0)
+        {
+            round = chkRound.GetComponent<CheckRound>().round;
+        }
+        else
+        {
+            round = 1;
+        }
         if (Q == null)
         {
             Q = client.Quiz;
@@ -48,13 +56,15 @@ public class GenerateQuestion : MonoBehaviour
 
     public void updateAandQ()
     {
-        for (int i = 0; i < Ans.Length; i++)
+        for (int i = 0; i < 5; i++)
         {
-            int index = (round * 5) + i;
-            for (int j = 1; j <= 4; j++)
+            Debug.Log(round);
+            int index = ((round - 1) * 5) + i;
+            for (int j = 0; j < 4; j++)
             {
-                var t = "Ans/" + Ans[i].name + "/Ans" + j;
-                GameObject.Find(t).GetComponent<TextMeshPro>().text = A[index][j - 1];
+                var t = "Ans/" + Ans[i].name + "/Ans" + (j+1);
+                Debug.Log(A[index][j]);
+                GameObject.Find(t).GetComponent<TextMeshPro>().text = A[index][j];
                 Question[i].GetComponent<QuestionTrigger>().QT = Q[index];
             }
 
@@ -64,8 +74,8 @@ public class GenerateQuestion : MonoBehaviour
     public void updateQ(List<string> QT)
     {
         /*Debug.Log(Q[index][0] + Q[index][1] + Q[index][2] + Q[index][3]);*/
-        Fnum.text = QT[0].Substring(1, QT[0].Length - 2);
-        Expression.text = QT[1].Substring(1, QT[0].Length - 2);
-        Snum.text = QT[2].Substring(1, QT[0].Length - 2);
+        Fnum.text = QT[0];
+        Expression.text = QT[1].Substring(1, QT[1].Length - 2);
+        Snum.text = QT[2];
     }
 }

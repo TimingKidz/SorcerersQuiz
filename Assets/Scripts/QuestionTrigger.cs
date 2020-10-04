@@ -30,7 +30,7 @@ public class QuestionTrigger : MonoBehaviour
         /*ansPlane.SetActive(false);*/
         for (int i = 0; i < 4; i++)
         {
-            if ((int.Parse(obj.name[3].ToString()) - 1).ToString() == QT[3].Substring(1, QT[3].Length - 2))
+            if ((int.Parse(obj.name[3].ToString()) - 1).ToString() == QT[3])
             {
                 stuntPlane.SetActive(false);
                 break;

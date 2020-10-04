@@ -5,7 +5,7 @@ using UnityEngine;
 public class CheckRound : MonoBehaviour
 {
     public GameObject wallstart;
-    int round;
+    public int round;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,6 @@ public class CheckRound : MonoBehaviour
         {
             wallstart.SetActive(false);
             round += 1;
-            print(round);
         }
     }
 
