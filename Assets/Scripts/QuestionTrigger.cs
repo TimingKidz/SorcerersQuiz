@@ -5,39 +5,43 @@ using UnityEngine.UI;
 
 public class QuestionTrigger : MonoBehaviour
 {
-    public GameObject canvas;
-    public Text Fnum;
-    public Text Snum;
-    public Text Expression;
+    public GameObject Question;
+    public GameObject gobj;
+    public GameObject UI;
+    int QCount;
     List<List<string>> Q;
     Client client;
-    GenerateQuation genQ;
-    bool c = true;
+    GenerateQuestion genQ;
 
     // Start is called before the first frame update
     void Start()
     {
-        client = GameObject.Find("GameObject").GetComponent<Client>();
-        genQ = GameObject.Find("UIController").GetComponent<GenerateQuation>();
+        QCount = 0;
+        client = gobj.GetComponent<Client>();
+        genQ = UI.GetComponent<GenerateQuestion>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (c && Q == null)
+        if (Q == null)
         {
             Q = client.Quiz;
-            Debug.Log(Q[0]);
-            c = false;
         }
+    }
+
+    public void AnswerCheck(GameObject obj)
+    {
+        
     }
 
     void OnTriggerEnter(Collider obj)
     {
         if (obj.gameObject.CompareTag("Player"))
         {
-            canvas.SetActive(true);
-            genQ.updateQ(Q[0]);
+            Question.SetActive(true);
+            Debug.Log(Q[QCount][0] + Q[QCount][1] + Q[QCount][2]);
+            genQ.updateQ(Q[QCount++]);
         }
     }
 }

@@ -79,6 +79,7 @@ public class Client : SocketIOComponent
             {
                 string a = "[sever object parent]/" + ClientId + "/Camera";
                 GameObject cam = GameObject.Find(a);
+                playerObject.tag = "Player";
                 cam.SetActive(true);
             }
 
