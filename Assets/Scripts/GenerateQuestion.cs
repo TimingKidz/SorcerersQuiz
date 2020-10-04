@@ -63,7 +63,7 @@ public class GenerateQuestion : MonoBehaviour
             for (int j = 0; j < 4; j++)
             {
                 var t = "Ans/" + Ans[i].name + "/Ans" + (j+1);
-                Debug.Log(A[index][j]);
+                /*Debug.Log(A[index][j]);*/
                 GameObject.Find(t).GetComponent<TextMeshPro>().text = A[index][j];
                 Question[i].GetComponent<QuestionTrigger>().QT = Q[index];
             }
