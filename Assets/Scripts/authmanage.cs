@@ -199,6 +199,7 @@ public class authmanage : MonoBehaviour
                         //Username is now set
                         //Now return to login screen
                         UIManager.instance.LoginScreen();
+                        
                         warningRegisterText.text = "";
                     }
                 }
