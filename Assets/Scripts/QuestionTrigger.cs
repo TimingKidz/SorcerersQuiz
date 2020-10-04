@@ -11,6 +11,7 @@ public class QuestionTrigger : MonoBehaviour
     int QCount;
     List<List<string>> Q;
     Client client;
+
     GenerateQuestion genQ;
 
     // Start is called before the first frame update
