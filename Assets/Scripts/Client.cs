@@ -24,6 +24,9 @@ public class Client : SocketIOComponent
     public List<List<string>> Ans;
     public List<List<string>> Pos;
 
+    public int time = -1;
+    bool chk = true;
+
     public override void Start()
     {
         base.Start();
@@ -36,6 +39,17 @@ public class Client : SocketIOComponent
     public override void Update()
     {
         base.Update();
+        print(DateTime.Now.Minute);
+        if (time != -1)
+        {
+            DateTime t = DateTime.Now;
+            if (t.Minute * 60 + t.Second >= time && chk)
+            {
+                GameObject tmp = GameObject.Find(ClientId);
+                tmp.AddComponent<PlayerController>();
+                chk = false;
+            }
+        }
     }
   /*  this.Emit();*/
 
@@ -89,16 +103,13 @@ public class Client : SocketIOComponent
 
         On("MatchReady", (E) =>
         {
-            GameObject tmp = GameObject.Find(ClientId);
             JSONObject quiz = E.data["Quiz"];
             JSONObject ans = E.data["Ans"];
             JSONObject pos = E.data["Pos"];
+            time = int.Parse(E.data["Time"].ToString());
             Quiz = JsonTOArray(quiz);
             Ans = JsonTOArray(ans);
             Pos = JsonTOArray(pos);
-
-            tmp.AddComponent<PlayerController>();
-            
         });
 
         On("discon", (E) =>
