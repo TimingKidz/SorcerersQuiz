@@ -71,6 +71,8 @@ public class Client : SocketIOComponent
             networkIdentity.SetSocketComponentReference(this);
             playerObject.transform.SetParent(networkContianer);
             playerObject.transform.position = new Vector3(E.data["posX"].f,E.data["posY"].f, E.data["posZ"].f);
+            playerObject.transform.eulerAngles = new Vector3(0, E.data["roY"].f, 0);
+
             serverObjects.Add(id, playerObject);
             serverNet.Add(id, networkIdentity);
 
@@ -99,6 +101,10 @@ public class Client : SocketIOComponent
             
         });
 
+        On("discon", (E) =>
+        {
+            Destroy(GameObject.Find(E.data["id"].ToString()));
+        });
 
 
         On("updatepos", (E) =>
@@ -155,7 +161,7 @@ public class Client : SocketIOComponent
 
     public void Disconect()
     {
-        Close();
+       Close();
     }
 }
     
