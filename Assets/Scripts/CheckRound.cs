@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StuntTrigger : MonoBehaviour
+public class CheckRound : MonoBehaviour
 {
-    public GameObject Question;
+    public GameObject wallstart;
+    public int round;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        wallstart.SetActive(true);
     }
 
     // Update is called once per frame
@@ -22,8 +23,16 @@ public class StuntTrigger : MonoBehaviour
     {
         if (obj.gameObject.CompareTag("Player"))
         {
-            obj.gameObject.GetComponent<PlayerController>().SpeedReducer(0);
-            Question.SetActive(false);
+            wallstart.SetActive(false);
+            round += 1;
+        }
+    }
+
+    private void OnTriggerExit(Collider obj)
+    {
+        if (obj.gameObject.CompareTag("Player"))
+        {
+            wallstart.SetActive(true);
         }
     }
 }
