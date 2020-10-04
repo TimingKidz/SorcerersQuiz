@@ -93,9 +93,6 @@ public class Client : SocketIOComponent
             Quiz = JsonTOArray(quiz);
             Ans = JsonTOArray(ans);
             Pos = JsonTOArray(pos);
-            Debug.Log(Quiz[0][0]);
-            Debug.Log(Ans[0][0]);
-            Debug.Log(Pos[0][0]);
 
             tmp.AddComponent<PlayerController>();
             
