@@ -46,6 +46,7 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+*.so
 Assets/Plugins/Android/androidx.annotation.annotation-1.1.0.jar
 Assets/Plugins/Android/androidx.annotation.annotation-1.1.0.jar.meta
 Assets/Plugins/Android/androidx.arch.core.core-common-2.0.0.jar
