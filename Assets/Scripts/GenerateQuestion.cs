@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GenerateQuation : MonoBehaviour
+public class GenerateQuestion : MonoBehaviour
 {
     public Text Fnum;
     public Text Snum;
@@ -23,8 +23,8 @@ public class GenerateQuation : MonoBehaviour
 
     public void updateQ (List<string> Q)
     {
-        Fnum.text = "0";
-        Snum.text = "0";
-        Expression.text = "+";
+        Fnum.text = Q[0].Substring(1, Q[0].Length - 2);
+        Expression.text = Q[1].Substring(1, Q[0].Length - 2);
+        Snum.text = Q[2].Substring(1, Q[0].Length - 2);
     }
 }
