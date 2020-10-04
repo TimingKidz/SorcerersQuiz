@@ -48,3 +48,9 @@ sysinfo.txt
 crashlytics-build.properties
 Assets/Firebase/Plugins/x86_64/FirebaseCppApp-6_16_0.so
 Assets/Plugins/GitHub/Editor/x64/sfw_x64.dll
+Assets/Plugins/GitHub/Editor/x64/sfw_x64.dll.meta
+Assets/Plugins/GitHub/Editor/x64.meta
+Assets/Plugins/GitHub/Editor.meta
+Assets/Plugins/GitHub.meta
+Assets/Plugins.meta
+Assets/Firebase/Plugins/x86_64/FirebaseCppApp-6_16_0.so.meta
