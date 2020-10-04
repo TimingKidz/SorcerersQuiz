@@ -174,8 +174,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 804672718}
 --- !u!65 &56482875
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -443,8 +444,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 1604711420}
 --- !u!65 &151181448
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -677,8 +679,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 804672718}
 --- !u!65 &151370361
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -917,7 +920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &291904041
 Transform:
   m_ObjectHideFlags: 0
@@ -1057,8 +1060,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 1579728542}
 --- !u!65 &313705938
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1321,8 +1325,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 1604711420}
 --- !u!65 &420132200
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1725,8 +1730,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 1224975368}
 --- !u!65 &495595511
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2203,8 +2209,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 961077137}
 --- !u!65 &660631548
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2415,8 +2422,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 1579728542}
 --- !u!65 &777434242
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2645,6 +2653,9 @@ MonoBehaviour:
   Question: {fileID: 229362876}
   gobj: {fileID: 1634123725}
   UI: {fileID: 1356547930}
+  stuntPlane: {fileID: 1967530025}
+  ansPlane: {fileID: 438634970}
+  QT: []
 --- !u!65 &804672721
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2927,6 +2938,9 @@ MonoBehaviour:
   Question: {fileID: 229362876}
   gobj: {fileID: 1634123725}
   UI: {fileID: 1356547930}
+  stuntPlane: {fileID: 291904040}
+  ansPlane: {fileID: 120457170}
+  QT: []
 --- !u!1 &968702571
 GameObject:
   m_ObjectHideFlags: 0
@@ -3146,8 +3160,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 961077137}
 --- !u!65 &968702578
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3327,8 +3342,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 1224975368}
 --- !u!65 &1096877614
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3727,8 +3743,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 961077137}
 --- !u!65 &1221376126
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3791,6 +3808,9 @@ MonoBehaviour:
   Question: {fileID: 229362876}
   gobj: {fileID: 1634123725}
   UI: {fileID: 1356547930}
+  stuntPlane: {fileID: 1405252492}
+  ansPlane: {fileID: 680972602}
+  QT: []
 --- !u!65 &1224975371
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3870,7 +3890,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1290136717
 Transform:
   m_ObjectHideFlags: 0
@@ -4013,9 +4033,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92e3c34673708404eb3508d71039739b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gobj: {fileID: 1634123725}
   Fnum: {fileID: 1857391163}
   Snum: {fileID: 1066664636}
   Expression: {fileID: 925723231}
+  Question:
+  - {fileID: 961077137}
+  - {fileID: 1224975368}
+  - {fileID: 1604711420}
+  - {fileID: 1579728542}
+  - {fileID: 804672718}
+  Ans:
+  - {fileID: 120457170}
+  - {fileID: 680972602}
+  - {fileID: 1020125490}
+  - {fileID: 892295888}
+  - {fileID: 438634970}
 --- !u!4 &1356547932
 Transform:
   m_ObjectHideFlags: 0
@@ -4049,7 +4082,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1405252493
 Transform:
   m_ObjectHideFlags: 0
@@ -4189,8 +4222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 804672718}
 --- !u!65 &1424385344
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4454,6 +4488,9 @@ MonoBehaviour:
   Question: {fileID: 229362876}
   gobj: {fileID: 1634123725}
   UI: {fileID: 1356547930}
+  stuntPlane: {fileID: 2062645564}
+  ansPlane: {fileID: 892295888}
+  QT: []
 --- !u!65 &1579728545
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4733,8 +4770,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 961077137}
 --- !u!65 &1589576598
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4801,8 +4839,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 1579728542}
 --- !u!65 &1595211282
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5031,6 +5070,9 @@ MonoBehaviour:
   Question: {fileID: 229362876}
   gobj: {fileID: 1634123725}
   UI: {fileID: 1356547930}
+  stuntPlane: {fileID: 1290136716}
+  ansPlane: {fileID: 1020125490}
+  QT: []
 --- !u!65 &1604711423
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5144,8 +5186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 804672718}
 --- !u!65 &1609272645
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5480,8 +5523,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 1604711420}
 --- !u!65 &1738279646
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5880,8 +5924,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 1604711420}
 --- !u!65 &1786237084
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6114,8 +6159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 1579728542}
 --- !u!65 &1835601653
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6744,8 +6790,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 1224975368}
 --- !u!65 &1945901167
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6944,7 +6991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1967530026
 Transform:
   m_ObjectHideFlags: 0
@@ -7084,8 +7131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df6f66284ddcbc4ea4a5c92db8e860b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobj: {fileID: 0}
-  Q: {fileID: 0}
+  Question: {fileID: 229362876}
+  gobj: {fileID: 1634123725}
+  Q: {fileID: 1224975368}
 --- !u!65 &1990055294
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7284,7 +7332,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2062645565
 Transform:
   m_ObjectHideFlags: 0
@@ -7511,7 +7559,7 @@ PrefabInstance:
     - target: {fileID: 5249010103149941721, guid: da26de1f8d780914bbcc928215710210,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5249010103149941721, guid: da26de1f8d780914bbcc928215710210,
         type: 3}
