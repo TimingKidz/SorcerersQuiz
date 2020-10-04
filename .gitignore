@@ -155,4 +155,3 @@ Assets/SocketIO/WebsocketSharp/websocket-sharp.csproj.meta
 Packages/packages-lock.json
 ProjectSettings/AndroidResolverDependencies.xml
 ProjectSettings/GvhProjectSettings.xml
-*.so
