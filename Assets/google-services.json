@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "795171429042",
+    "firebase_url": "https://unitygameserver-60da8.firebaseio.com",
+    "project_id": "unitygameserver-60da8",
+    "storage_bucket": "unitygameserver-60da8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795171429042:android:3be221736e7282bc1b47ab",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.SorcerersQuiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "795171429042-8e3bnidb2pqqmp1b72fp0upcqnqamhjj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDFXgXGtTV0s_dlH25_c4zxmXLMq8oh_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "795171429042-8e3bnidb2pqqmp1b72fp0upcqnqamhjj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
