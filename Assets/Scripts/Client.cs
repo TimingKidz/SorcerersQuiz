@@ -4,6 +4,8 @@ using UnityEngine;
 using SocketIO;
 using System;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
+using System.Linq;
 
 public class Client : SocketIOComponent
 {
@@ -16,6 +18,9 @@ public class Client : SocketIOComponent
     private GameObject playerPrefeb;
     private Dictionary<string, GameObject> serverObjects;
     private Dictionary<string, NetworkIdentity> serverNet;
+
+    public List<List<string>> Quiz;
+
     public override void Start()
     {
         base.Start();
@@ -36,8 +41,8 @@ public class Client : SocketIOComponent
     {
         On("open", (E) =>
          {
+             
              Debug.Log("EiEi");
-            
          });
 
         On("Initail", (E) =>
@@ -79,9 +84,38 @@ public class Client : SocketIOComponent
         On("MatchReady", (E) =>
         {
             GameObject tmp = GameObject.Find(ClientId);
+            JSONObject quiz = E.data["Quiz"];
+            List<List<string>> listQ = new List<List<string>>(); 
+            List<string> listinQ = new List<string>();
+            int  i = 0;
+            int j = 0;
+            while (true)
+            {
+                j = 0;
+                listinQ = new List<string>();
+                if (quiz[i] == null)
+                {
+                    break;
+                }
+                while (true)
+                {
+                    if (quiz[i][j] == null)
+                    {
+                        break;
+                    }
+                    listinQ.Add(quiz[i][j].ToString());
+                    j++;
+                }
+                listQ.Add(listinQ); 
+                i++;
+            }
+            Quiz = listQ;
+            Debug.Log(Quiz[0][0]);
             tmp.AddComponent<PlayerController>();
             
         });
+
+
 
         On("updatepos", (E) =>
         {
