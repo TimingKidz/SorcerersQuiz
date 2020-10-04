@@ -30,6 +30,9 @@ public class CheckRound : MonoBehaviour
 
     private void OnTriggerExit(Collider obj)
     {
-        wallstart.SetActive(true);
+        if (obj.gameObject.CompareTag("Player"))
+        {
+            wallstart.SetActive(true);
+        }
     }
 }

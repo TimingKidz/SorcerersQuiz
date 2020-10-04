@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StuntTrigger : MonoBehaviour
 {
+    public GameObject Question;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class StuntTrigger : MonoBehaviour
         if (obj.gameObject.CompareTag("Player"))
         {
             obj.gameObject.GetComponent<PlayerController>().SpeedReducer(0);
+            Question.SetActive(false);
         }
     }
 }
