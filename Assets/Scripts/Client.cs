@@ -152,8 +152,13 @@ public class Client : SocketIOComponent
         serverNet = new Dictionary<string, NetworkIdentity>();
 
     }
-}
 
+    public void Disconect()
+    {
+        Close();
+    }
+}
+    
 
 
 [Serializable]
