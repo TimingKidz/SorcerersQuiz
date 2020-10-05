@@ -43,8 +43,9 @@ public class Client : SocketIOComponent
         if (time != -1)
         {
             DateTime t = DateTime.Now;
-            if (t.Minute * 60 + t.Second >= time && chk)
+            if (t.Minute * 60 *1000 + t.Second*1000 +t.Millisecond >= time && chk)
             {
+                Debug.Log(time);
                 GameObject tmp = GameObject.Find(ClientId);
                 tmp.AddComponent<PlayerController>();
                 chk = false;
@@ -107,6 +108,7 @@ public class Client : SocketIOComponent
             JSONObject ans = E.data["Ans"];
             JSONObject pos = E.data["Pos"];
             time = int.Parse(E.data["Time"].ToString());
+            
             Quiz = JsonTOArray(quiz);
             Ans = JsonTOArray(ans);
             Pos = JsonTOArray(pos);
@@ -125,7 +127,6 @@ public class Client : SocketIOComponent
             float y = E.data["posY"].f;
             float z = E.data["posZ"].f;
             float ry = E.data["roY"].f;
-            Debug.Log(ry);
             GameObject networkIdentity = serverObjects[id];
             networkIdentity.transform.position = new Vector3(x, y, z);
             networkIdentity.transform.eulerAngles = new Vector3(0, ry, 0);
