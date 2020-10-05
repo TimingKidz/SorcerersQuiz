@@ -63,8 +63,15 @@ public class GenerateQuestion : MonoBehaviour
             for (int j = 0; j < 4; j++)
             {
                 var t = "Ans/" + Ans[i].name + "/Ans" + (j+1);
+                GameObject AnsPlane = GameObject.Find(t);
                 /*Debug.Log(A[index][j]);*/
-                GameObject.Find(t).GetComponent<TextMeshPro>().text = A[index][j];
+                AnsPlane.GetComponent<TextMeshPro>().text = A[index][j];
+                AnsPlane.GetComponent<RectTransform>().localPosition = 
+                    new Vector3(
+                        AnsPlane.GetComponent<RectTransform>().localPosition.x, 
+                        float.Parse(pos[index][j]), 
+                        AnsPlane.GetComponent<RectTransform>().localPosition.z
+                    );
                 Question[i].GetComponent<QuestionTrigger>().QT = Q[index];
             }
 

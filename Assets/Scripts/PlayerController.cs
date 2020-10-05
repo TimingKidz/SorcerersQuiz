@@ -6,8 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 Direction = Vector3.zero;
-    public float speed = 10.0f;
-    public float accelerationSpeed = 100.0f;
+    public float speed = 12.0f;
+    public float rotateSpeed = 100.0f;
+    public float vSpeed = 20.0f;
     private Vector3 Init = Vector3.zero;
     public bool isStunt = false;
     float currentTime;
@@ -26,9 +27,9 @@ public class PlayerController : MonoBehaviour
         if (isStunt)
         {
             speed = 0.0f;
-            if (Time.time >= currentTime + 5)
+            if (Time.time >= currentTime + 1.5)
             {
-                speed = 10.0f;
+                speed = 12.0f;
                 isStunt = false;
             }
         }
@@ -36,8 +37,8 @@ public class PlayerController : MonoBehaviour
         // float posX = Input.gyro.attitude.x;
         // float posY = Input.gyro.attitude.y;
 
-        float posX = Input.GetAxis("Horizontal") * accelerationSpeed;
-        float posY = Input.GetAxis("Vertical") * accelerationSpeed;
+        float posX = Input.GetAxis("Horizontal") * rotateSpeed;
+        float posY = Input.GetAxis("Vertical") * vSpeed;
         /*
                 float posX = Input.acceleration.x * accelerationSpeed;
                 float posY = Input.acceleration.y * accelerationSpeed;*/

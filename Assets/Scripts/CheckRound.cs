@@ -16,7 +16,7 @@ public class CheckRound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (round == 3)
+        if (round == 4)
         {
             GameObject.FindWithTag("Player").GetComponent<PlayerController>().SpeedReducer(0);
         }
