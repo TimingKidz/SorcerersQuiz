@@ -965,7 +965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdaf42e0a2826504a95dfd9474b187c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Question: {fileID: 0}
+  Question: {fileID: 229362876}
 --- !u!65 &432514362
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1178,7 +1178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdaf42e0a2826504a95dfd9474b187c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Question: {fileID: 0}
+  Question: {fileID: 229362876}
 --- !u!65 &459521197
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4372,7 +4372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdaf42e0a2826504a95dfd9474b187c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Question: {fileID: 0}
+  Question: {fileID: 229362876}
 --- !u!65 &1408906297
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5225,6 +5225,7 @@ MonoBehaviour:
   networkContianer: {fileID: 388284150}
   playerPrefeb: {fileID: 5249010103149941721, guid: da26de1f8d780914bbcc928215710210,
     type: 3}
+  time: -1
 --- !u!4 &1634123727
 Transform:
   m_ObjectHideFlags: 0
@@ -5701,7 +5702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdaf42e0a2826504a95dfd9474b187c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Question: {fileID: 0}
+  Question: {fileID: 229362876}
 --- !u!1 &1740119351
 GameObject:
   m_ObjectHideFlags: 0
@@ -5901,7 +5902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdaf42e0a2826504a95dfd9474b187c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Question: {fileID: 0}
+  Question: {fileID: 229362876}
 --- !u!65 &1757294104
 BoxCollider:
   m_ObjectHideFlags: 0
