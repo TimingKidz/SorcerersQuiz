@@ -39,7 +39,6 @@ public class Client : SocketIOComponent
     public override void Update()
     {
         base.Update();
-        print(DateTime.Now.Minute);
         if (time != -1)
         {
             DateTime t = DateTime.Now;
@@ -59,8 +58,6 @@ public class Client : SocketIOComponent
     {
         On("open", (E) =>
          {
-             
-             Debug.Log("EiEi");
          });
 
         On("Initail", (E) =>
@@ -72,7 +69,6 @@ public class Client : SocketIOComponent
         On("register", (E) =>
          {
              ClientId = E.data["id"].ToString();
-             Debug.Log(ClientId);
              
          });
 
