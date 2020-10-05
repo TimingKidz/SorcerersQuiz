@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 Direction = Vector3.zero;
-    public float speed = 12.0f;
+    public float defaultSpeed = 12.0f;
+    public float speed;
     public float rotateSpeed = 100.0f;
     public float vSpeed = 20.0f;
     private Vector3 Init = Vector3.zero;
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        speed = defaultSpeed;
         controller = GetComponent<CharacterController>();
 /*        Init.x = Input.acceleration.x;
         Init.y = Input.acceleration.y;*/
@@ -24,12 +26,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(speed);
         if (isStunt)
         {
             speed = 0.0f;
             if (Time.time >= currentTime + 1.5)
             {
-                speed = 12.0f;
+                speed = defaultSpeed;
                 isStunt = false;
             }
         }
@@ -51,7 +54,13 @@ public class PlayerController : MonoBehaviour
         CollisionFlags flag = controller.Move(Direction * Time.deltaTime);
     }
 
-    public void SpeedReducer(float s)
+    public void SpeedReducer()
+    {
+        float cTime = Time.time;
+        speed -= 1;
+    }
+
+    public void SpeedZero()
     {
         currentTime = Time.time;
         isStunt = true;

@@ -18,7 +18,7 @@ public class CheckRound : MonoBehaviour
     {
         if (round == 4)
         {
-            GameObject.FindWithTag("Player").GetComponent<PlayerController>().SpeedReducer(0);
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().SpeedZero();
         }
     }
 
