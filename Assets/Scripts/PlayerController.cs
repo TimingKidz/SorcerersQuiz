@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
        
         float posX = theAcceleration.x * 150.0f;
         float posY = theAcceleration.y * 50.0f;
-        Direction = new Vector3(0, posY, speed);
+        Direction = new Vector3(0, -posY, speed);
         //controller.Move(Direction * Time.deltaTime);
         Direction = transform.TransformDirection(Direction);
         transform.Rotate(0, posX*Time.deltaTime, 0);
@@ -69,15 +69,7 @@ public class PlayerController : MonoBehaviour
         CollisionFlags flag = controller.Move(Direction * Time.deltaTime);
     }
 
-    void OnGUI()
-    {
-        GUILayout.Label("");
-        GUILayout.Label("");
-
-
-        GUILayout.Label(accelerationSnapshot.x.ToString() + " " + accelerationSnapshot.y.ToString() + " " + accelerationSnapshot.z.ToString());
-        GUILayout.Label(theAcceleration.x.ToString() + " " + theAcceleration.y.ToString() + " " + theAcceleration.z.ToString());
-    }
+    
 
     public void SpeedZero()
     {

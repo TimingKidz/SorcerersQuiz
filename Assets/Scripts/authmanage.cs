@@ -6,6 +6,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+
 public class authmanage : MonoBehaviour
 {
     //Firebase variables
@@ -13,6 +19,7 @@ public class authmanage : MonoBehaviour
     public DependencyStatus dependencyStatus;
     public FirebaseAuth auth;
     public FirebaseUser User;
+    
 
     //Login variables
     [Header("Login")]
@@ -29,10 +36,34 @@ public class authmanage : MonoBehaviour
     public InputField passwordRegisterVerifyField;
     public Text warningRegisterText;
 
+
+
     [Header("Profile")]
     public Text UidText;
-    
-    void Awake()
+
+    public static authmanage instance
+    {
+        get
+        {
+            if (m_instance == null)
+            {
+                m_instance = (authmanage)FindObjectOfType(typeof(authmanage));
+
+                if (m_instance == null)
+                {
+                    Debug.LogError(typeof(authmanage) + "not found.");
+                }
+            }
+
+            return m_instance;
+        }
+
+    }
+    private static authmanage m_instance;
+
+
+
+void Awake()
     {
         //Check that all of the necessary dependencies for Firebase are present on the system
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
@@ -48,6 +79,14 @@ public class authmanage : MonoBehaviour
                 Debug.LogError("Could not resolve all Firebase dependencies: " + dependencyStatus);
             }
         });
+
+        if (this != instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     private void InitializeFirebase()

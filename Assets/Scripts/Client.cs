@@ -13,26 +13,33 @@ public class Client : SocketIOComponent
 
     [SerializeField]
     private Transform networkContianer;
+
     public static string ClientId;
 
     [SerializeField]
     private GameObject playerPrefeb;
     private Dictionary<string, GameObject> serverObjects;
     private Dictionary<string, NetworkIdentity> serverNet;
+    public Text NubText;
 
     public List<List<string>> Quiz;
     public List<List<string>> Ans;
     public List<List<string>> Pos;
 
+
     public int time = -1;
+    public int latency = -1;
+    public int nub = -1;
+    public int miliTime = -1;
     bool chk = true;
 
     public override void Start()
     {
+       
         base.Start();
         Initialize();
         setupEvents();
-
+        
     }
 
     // Update is called once per frame
@@ -42,7 +49,19 @@ public class Client : SocketIOComponent
         if (time != -1)
         {
             DateTime t = DateTime.Now;
-            if (t.Minute * 60 *1000 + t.Second*1000 +t.Millisecond >= time && chk)
+
+            miliTime = (t.Minute * 60 * 1000 + t.Second * 1000 + t.Millisecond) - latency;
+            nub = (time - miliTime)/1000;
+            if(nub > 0)
+            {
+                NubText.text = nub.ToString();
+            }
+            else
+            {
+                NubText.text = "";
+            }
+            
+            if ( miliTime >= time && chk)
             {
                 Debug.Log(time);
                 GameObject tmp = GameObject.Find(ClientId);
@@ -51,24 +70,34 @@ public class Client : SocketIOComponent
             }
         }
     }
-  /*  this.Emit();*/
+    /*this.Emit();*/
 
 
     private void setupEvents()
     {
         On("open", (E) =>
          {
+            
          });
 
+
         On("Initail", (E) =>
-         {
-             this.Emit("xx", new JSONObject(JsonUtility.ToJson(new test())));
-         });
-        
+        {
+            playerid tmp = new playerid();
+            tmp.id = authmanage.instance.User.UserId;
+            tmp.name = authmanage.instance.User.DisplayName;
+            this.Emit("Initail", new JSONObject(JsonUtility.ToJson(tmp)));
+        });
+
+        On("joinroom", (E) =>
+        {
+            this.Emit("joinroom");
+        });
         
         On("register", (E) =>
          {
              ClientId = E.data["id"].ToString();
+             Debug.Log(ClientId);
              
          });
 
@@ -83,7 +112,6 @@ public class Client : SocketIOComponent
             playerObject.transform.SetParent(networkContianer);
             playerObject.transform.position = new Vector3(E.data["posX"].f,E.data["posY"].f, E.data["posZ"].f);
             playerObject.transform.eulerAngles = new Vector3(0, E.data["roY"].f, 0);
-
             serverObjects.Add(id, playerObject);
             serverNet.Add(id, networkIdentity);
 
@@ -104,6 +132,9 @@ public class Client : SocketIOComponent
             JSONObject ans = E.data["Ans"];
             JSONObject pos = E.data["Pos"];
             time = int.Parse(E.data["Time"].ToString());
+            int Stime = int.Parse(E.data["Timenow"].ToString());
+            DateTime t = DateTime.Now;
+            latency = (t.Minute * 60 * 1000 + t.Second * 1000 + t.Millisecond) - Stime;
             
             Quiz = JsonTOArray(quiz);
             Ans = JsonTOArray(ans);
@@ -160,6 +191,13 @@ public class Client : SocketIOComponent
         return temp1;
     }
 
+    void OnGUI()
+    {
+        GUILayout.Label("");
+        GUILayout.Label("");
+
+        GUILayout.Label("     "+nub.ToString());
+    }
     public void Initialize()
     {
         serverObjects = new Dictionary<string, GameObject>();
@@ -176,8 +214,9 @@ public class Client : SocketIOComponent
 
 
 [Serializable]
-public class test
+public class playerid
 {
-    public string text = "eiei";
+    public string id;
+    public string name;
    
 }
