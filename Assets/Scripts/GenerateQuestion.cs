@@ -18,10 +18,13 @@ public class GenerateQuestion : MonoBehaviour
     List<List<string>> pos;
     Client client;
     int round;
+    public Button boostButton;
+    public int ansCount;
 
     // Start is called before the first frame update
     void Start()
     {
+        ansCount = 0;
         client = gobj.GetComponent<Client>();
     }
 
@@ -83,5 +86,15 @@ public class GenerateQuestion : MonoBehaviour
         Fnum.text = QT[0];
         Expression.text = QT[1].Substring(1, QT[1].Length - 2);
         Snum.text = QT[2];
+    }
+
+    public void BoostButton(bool chk)
+    {
+        boostButton.interactable = chk;
+    }
+
+    public void BoostButtonSpeedUp()
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isBoost = true;
     }
 }

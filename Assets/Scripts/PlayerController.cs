@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float vSpeed = 20.0f;
     private Vector3 Init = Vector3.zero;
     public bool isStunt = false;
+    public bool isBoost = false;
     float currentTime;
     Vector3 theAcceleration;
     Vector3 accelerationSnapshot;
@@ -44,6 +45,17 @@ public class PlayerController : MonoBehaviour
             {
                 speed = defaultSpeed;
                 isStunt = false;
+            }
+        }
+
+        if (isBoost)
+        {
+            speed = 15.0f;
+            float cTime = Time.time;
+            if (Time.time >= cTime + 3.0)
+            {
+                speed = defaultSpeed;
+                isBoost = false;
             }
         }
 
