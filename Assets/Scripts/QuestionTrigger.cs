@@ -27,14 +27,25 @@ public class QuestionTrigger : MonoBehaviour
 
     public void AnswerCheck(GameObject obj)
     {
+        bool c = true;
         /*ansPlane.SetActive(false);*/
         for (int i = 0; i < 4; i++)
         {
             if ((int.Parse(obj.name[3].ToString()) - 1).ToString() == QT[3])
             {
                 stuntPlane.SetActive(false);
+                genQ.ansCount++;
+                c = false;
                 break;
             }
+        }
+        if (genQ.ansCount >= 2)
+        {
+            genQ.BoostButton(true);
+        }
+        if (c)
+        {
+            genQ.ansCount = 0;
         }
     }
 
