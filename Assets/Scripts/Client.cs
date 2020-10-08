@@ -6,6 +6,7 @@ using System;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
 
 public class Client : SocketIOComponent
 {
@@ -112,6 +113,8 @@ public class Client : SocketIOComponent
             playerObject.transform.SetParent(networkContianer);
             playerObject.transform.position = new Vector3(E.data["posX"].f,E.data["posY"].f, E.data["posZ"].f);
             playerObject.transform.eulerAngles = new Vector3(0, E.data["roY"].f, 0);
+            string f = "[sever object parent]/" + id + "/PlayerName";
+            GameObject.Find(f).GetComponent<TextMeshPro>().text = E.data["username"].ToString().Substring(1, E.data["username"].ToString().Length - 2);
             serverObjects.Add(id, playerObject);
             serverNet.Add(id, networkIdentity);
 
@@ -121,6 +124,7 @@ public class Client : SocketIOComponent
                 string a = "[sever object parent]/" + ClientId + "/Camera";
                 GameObject cam = GameObject.Find(a);
                 playerObject.tag = "Player";
+                GameObject.Find(f).SetActive(false);
                 cam.SetActive(true);
             }
 

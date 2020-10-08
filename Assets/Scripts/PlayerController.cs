@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public bool isStunt = false;
     public bool isBoost = false;
     float currentTime;
+    float cTime;
     Vector3 theAcceleration;
     Vector3 accelerationSnapshot;
     // Start is called before the first frame update
@@ -50,8 +51,7 @@ public class PlayerController : MonoBehaviour
 
         if (isBoost)
         {
-            speed = 15.0f;
-            float cTime = Time.time;
+            speed = 20.0f;
             if (Time.time >= cTime + 3.0)
             {
                 speed = defaultSpeed;
@@ -61,16 +61,16 @@ public class PlayerController : MonoBehaviour
 
         // float posX = Input.gyro.attitude.x;
         // float posY = Input.gyro.attitude.y;
-        /*
-                float posX = Input.GetAxis("Horizontal") * rotateSpeed;
-                float posY = Input.GetAxis("Vertical") * vSpeed;*/
-       
-        theAcceleration = Input.acceleration - new Vector3(0,accelerationSnapshot.y,0);
+
+        /*float posX = Input.GetAxis("Horizontal") * rotateSpeed;
+        float posY = Input.GetAxis("Vertical") * vSpeed;*/
+
+        theAcceleration = Input.acceleration - new Vector3(0, accelerationSnapshot.y, 0);
 
         /*
                 float posX = Input.acceleration.x * accelerationSpeed;
                 float posY = Input.acceleration.y * accelerationSpeed;*/
-       
+
         float posX = theAcceleration.x * 150.0f;
         float posY = theAcceleration.y * 50.0f;
         Direction = new Vector3(0, -posY, speed);
@@ -87,5 +87,11 @@ public class PlayerController : MonoBehaviour
     {
         currentTime = Time.time;
         isStunt = true;
+    }
+
+    public void Boost()
+    {
+        cTime = Time.time;
+        isBoost = true;
     }
 }
