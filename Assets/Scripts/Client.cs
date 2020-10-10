@@ -69,6 +69,7 @@ public class Client : SocketIOComponent
 
                 GameObject tmp = GameObject.Find(ClientId);
                 tmp.AddComponent<PlayerController>();
+                
                 chk = false;
             }
         }
@@ -123,13 +124,8 @@ public class Client : SocketIOComponent
 
             if (networkIdentity.GetIsControlling())
             {
-                string a = "[sever object parent]/" + ClientId + "/Camera";
-                GameObject cam = GameObject.Find(a);
                 playerObject.tag = "Player";
                 GameObject.Find(f).SetActive(false);
-                cam.SetActive(true);
-                GameObject.Find("Loading").SetActive(false);
-                PlayUI.SetActive(true);
             }
 
         });
@@ -143,7 +139,12 @@ public class Client : SocketIOComponent
             int Stime = int.Parse(E.data["Timenow"].ToString());
             DateTime t = DateTime.Now;
             latency = (t.Minute * 60 * 1000 + t.Second * 1000 + t.Millisecond) - Stime;
+            GameObject.Find("Loading").SetActive(false);
+            PlayUI.SetActive(true);
+            string a = "[sever object parent]/" + ClientId + "/Camera";
+            GameObject cam = GameObject.Find(a);
             
+            cam.SetActive(true);
             Quiz = JsonTOArray(quiz);
             Ans = JsonTOArray(ans);
             Pos = JsonTOArray(pos);
