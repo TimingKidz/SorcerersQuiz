@@ -96,6 +96,7 @@ public class GenerateQuestion : MonoBehaviour
 
     public void BoostButtonSpeedUp()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isBoost = true;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Boost();
+        ansCount = 0;
     }
 }

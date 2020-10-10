@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public bool isStunt = false;
     public bool isBoost = false;
     float currentTime;
+    float cTime;
     Vector3 theAcceleration;
     Vector3 accelerationSnapshot;
     // Start is called before the first frame update
@@ -50,8 +51,7 @@ public class PlayerController : MonoBehaviour
 
         if (isBoost)
         {
-            speed = 15.0f;
-            float cTime = Time.time;
+            speed = 20.0f;
             if (Time.time >= cTime + 3.0)
             {
                 speed = defaultSpeed;
@@ -94,4 +94,9 @@ public class PlayerController : MonoBehaviour
         defaultSpeed = 0.0f;
     }
     
+    public void Boost()
+    {
+        cTime = Time.time;
+        isBoost = true;
+    }
 }

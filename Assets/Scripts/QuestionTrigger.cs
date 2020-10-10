@@ -27,7 +27,6 @@ public class QuestionTrigger : MonoBehaviour
 
     public void AnswerCheck(GameObject obj)
     {
-        bool c = true;
         /*ansPlane.SetActive(false);*/
         for (int i = 0; i < 4; i++)
         {
@@ -35,17 +34,12 @@ public class QuestionTrigger : MonoBehaviour
             {
                 stuntPlane.SetActive(false);
                 genQ.ansCount++;
-                c = false;
                 break;
             }
         }
         if (genQ.ansCount >= 2)
         {
             genQ.BoostButton(true);
-        }
-        if (c)
-        {
-            genQ.ansCount = 0;
         }
     }
 
