@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         print(speed);
+        speed = defaultSpeed;
         if (isStunt)
         {
             speed = 0.0f;
