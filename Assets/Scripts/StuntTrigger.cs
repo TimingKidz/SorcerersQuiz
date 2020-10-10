@@ -22,7 +22,7 @@ public class StuntTrigger : MonoBehaviour
     {
         if (obj.gameObject.CompareTag("Player"))
         {
-            obj.gameObject.GetComponent<PlayerController>().SpeedReducer(0);
+            obj.gameObject.GetComponent<PlayerController>().SpeedZero();
             Question.SetActive(false);
         }
     }

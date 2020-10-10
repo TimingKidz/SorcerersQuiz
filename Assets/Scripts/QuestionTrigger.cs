@@ -33,8 +33,13 @@ public class QuestionTrigger : MonoBehaviour
             if ((int.Parse(obj.name[3].ToString()) - 1).ToString() == QT[3])
             {
                 stuntPlane.SetActive(false);
+                genQ.ansCount++;
                 break;
             }
+        }
+        if (genQ.ansCount >= 2)
+        {
+            genQ.BoostButton(true);
         }
     }
 

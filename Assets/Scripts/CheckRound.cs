@@ -1,24 +1,71 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CheckRound : MonoBehaviour
 {
+    public GameObject gobj;
     public GameObject wallstart;
+    public GameObject EndCanvas;
+    public Text rank;
     public int round;
-
+    private NetworkIdentity networkIdentity;
+    Client client;
+    bool isfin = false;
+    bool isSetnet = false;
     // Start is called before the first frame update
     void Start()
     {
         wallstart.SetActive(true);
+        client = gobj.GetComponent<Client>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (round == 3)
+        if (!isSetnet)
         {
-            GameObject.FindWithTag("Player").GetComponent<PlayerController>().SpeedReducer(0);
+            if (Client.ClientId != null && client.serverNet != null)
+            {
+                networkIdentity = client.serverNet[Client.ClientId];
+                isSetnet = true;
+            }
+
+        }
+
+        if (!isfin)
+        {
+            if (round == 2)
+            {
+                Debug.Log("sssss");
+                GameObject.FindWithTag("Player").GetComponent<PlayerController>().setzero();
+                networkIdentity.GetIsSocket().Emit("finish");
+                GameObject.Find("Playing").SetActive(false);
+                EndCanvas.SetActive(true);
+                isfin = true;
+            }
+        }
+        
+        if (client.range != -1)
+        {
+            Debug.Log(client.range);
+            if (client.range == 1)
+            {
+                rank.text = "1st";
+            }
+            else if (client.range == 2)
+            {
+                rank.text = "2nd";
+            }
+            else if (client.range == 3)
+            {
+                rank.text = "3rd";
+            }
+            else
+            {
+                rank.text = client.range + "th";
+            }
         }
     }
 

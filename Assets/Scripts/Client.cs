@@ -6,6 +6,7 @@ using System;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
 
 public class Client : SocketIOComponent
 {
@@ -13,61 +14,89 @@ public class Client : SocketIOComponent
 
     [SerializeField]
     private Transform networkContianer;
+
     public static string ClientId;
 
     [SerializeField]
     private GameObject playerPrefeb;
     private Dictionary<string, GameObject> serverObjects;
-    private Dictionary<string, NetworkIdentity> serverNet;
+    public Dictionary<string, NetworkIdentity> serverNet;
+    public GameObject NubText;
+    public GameObject PlayUI;
 
     public List<List<string>> Quiz;
     public List<List<string>> Ans;
     public List<List<string>> Pos;
 
+
     public int time = -1;
+    public int latency = -1;
+    public int nub = -1;
+    public int miliTime = -1;
+    public int range = -1;
     bool chk = true;
 
     public override void Start()
     {
+       
         base.Start();
         Initialize();
         setupEvents();
-
+        
     }
 
     // Update is called once per frame
     public override void Update()
     {
         base.Update();
-        print(DateTime.Now.Minute);
         if (time != -1)
         {
             DateTime t = DateTime.Now;
-            if (t.Minute * 60 *1000 + t.Second*1000 +t.Millisecond >= time && chk)
+
+            miliTime = (t.Minute * 60 * 1000 + t.Second * 1000 + t.Millisecond) - latency;
+            nub = (time - miliTime)/1000;
+            if(nub > 0)
             {
-                Debug.Log(time);
+                NubText.GetComponent<Text>().text = nub.ToString();
+            }
+            else
+            {
+                NubText.SetActive(false);
+            }
+            
+            if ( miliTime >= time && chk)
+            {
+
                 GameObject tmp = GameObject.Find(ClientId);
                 tmp.AddComponent<PlayerController>();
+                
                 chk = false;
             }
         }
     }
-  /*  this.Emit();*/
+    /*this.Emit();*/
 
 
     private void setupEvents()
     {
         On("open", (E) =>
          {
-             
-             Debug.Log("EiEi");
+            
          });
 
+
         On("Initail", (E) =>
-         {
-             this.Emit("xx", new JSONObject(JsonUtility.ToJson(new test())));
-         });
-        
+        {
+            playerid tmp = new playerid();
+            tmp.id = authmanage.instance.User.UserId;
+            tmp.name = authmanage.instance.User.DisplayName;
+            this.Emit("Initail", new JSONObject(JsonUtility.ToJson(tmp)));
+        });
+
+        On("joinroom", (E) =>
+        {
+            this.Emit("joinroom");
+        });
         
         On("register", (E) =>
          {
@@ -87,17 +116,16 @@ public class Client : SocketIOComponent
             playerObject.transform.SetParent(networkContianer);
             playerObject.transform.position = new Vector3(E.data["posX"].f,E.data["posY"].f, E.data["posZ"].f);
             playerObject.transform.eulerAngles = new Vector3(0, E.data["roY"].f, 0);
-
+            string f = "[sever object parent]/" + id + "/PlayerName";
+            GameObject.Find(f).GetComponent<TextMeshPro>().text = E.data["username"].ToString().Substring(1, E.data["username"].ToString().Length - 2);
             serverObjects.Add(id, playerObject);
             serverNet.Add(id, networkIdentity);
 
 
             if (networkIdentity.GetIsControlling())
             {
-                string a = "[sever object parent]/" + ClientId + "/Camera";
-                GameObject cam = GameObject.Find(a);
                 playerObject.tag = "Player";
-                cam.SetActive(true);
+                GameObject.Find(f).SetActive(false);
             }
 
         });
@@ -108,7 +136,15 @@ public class Client : SocketIOComponent
             JSONObject ans = E.data["Ans"];
             JSONObject pos = E.data["Pos"];
             time = int.Parse(E.data["Time"].ToString());
+            int Stime = int.Parse(E.data["Timenow"].ToString());
+            DateTime t = DateTime.Now;
+            latency = (t.Minute * 60 * 1000 + t.Second * 1000 + t.Millisecond) - Stime;
+            GameObject.Find("Loading").SetActive(false);
+            PlayUI.SetActive(true);
+            string a = "[sever object parent]/" + ClientId + "/Camera";
+            GameObject cam = GameObject.Find(a);
             
+            cam.SetActive(true);
             Quiz = JsonTOArray(quiz);
             Ans = JsonTOArray(ans);
             Pos = JsonTOArray(pos);
@@ -131,6 +167,14 @@ public class Client : SocketIOComponent
             networkIdentity.transform.position = new Vector3(x, y, z);
             networkIdentity.transform.eulerAngles = new Vector3(0, ry, 0);
 
+        });
+
+        On("finish", (E) =>
+        {
+            range = int.Parse(E.data["No"].ToString());
+            string a = "[sever object parent]/" + ClientId + "/Camera";
+            GameObject cam = GameObject.Find(a);
+            cam.SetActive(false);
         });
 
     }
@@ -164,6 +208,13 @@ public class Client : SocketIOComponent
         return temp1;
     }
 
+    void OnGUI()
+    {
+        GUILayout.Label("");
+        GUILayout.Label("");
+
+        GUILayout.Label("     "+nub.ToString());
+    }
     public void Initialize()
     {
         serverObjects = new Dictionary<string, GameObject>();
@@ -180,8 +231,9 @@ public class Client : SocketIOComponent
 
 
 [Serializable]
-public class test
+public class playerid
 {
-    public string text = "eiei";
+    public string id;
+    public string name;
    
 }
