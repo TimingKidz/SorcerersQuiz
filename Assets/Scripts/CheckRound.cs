@@ -41,8 +41,7 @@ public class CheckRound : MonoBehaviour
                 Debug.Log("sssss");
                 GameObject.FindWithTag("Player").GetComponent<PlayerController>().setzero();
                 networkIdentity.GetIsSocket().Emit("finish");
-                GameObject.Find("Playing/SlowButton").SetActive(false);
-                GameObject.Find("Playing/BoostButton").SetActive(false);
+                GameObject.Find("Playing").SetActive(false);
                 EndCanvas.SetActive(true);
                 isfin = true;
             }
