@@ -33,6 +33,7 @@ public class Client : SocketIOComponent
     public int latency = -1;
     public int nub = -1;
     public int miliTime = -1;
+    public int range = -1;
     bool chk = true;
 
     public override void Start()
@@ -65,7 +66,7 @@ public class Client : SocketIOComponent
             
             if ( miliTime >= time && chk)
             {
-                Debug.Log(time);
+
                 GameObject tmp = GameObject.Find(ClientId);
                 tmp.AddComponent<PlayerController>();
                 chk = false;
@@ -165,6 +166,11 @@ public class Client : SocketIOComponent
             networkIdentity.transform.position = new Vector3(x, y, z);
             networkIdentity.transform.eulerAngles = new Vector3(0, ry, 0);
 
+        });
+
+        On("finish", (E) =>
+        {
+            range = int.Parse(E.data["No"].ToString());
         });
 
     }

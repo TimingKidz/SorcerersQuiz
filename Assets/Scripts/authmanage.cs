@@ -160,7 +160,7 @@ void Awake()
             warningLoginText.text = "";
             confirmLoginText.text = "Logged In";
             UIManager.instance.MainMenu();
-            UidText.text = User.DisplayName;
+            UidText.text = authmanage.instance.User.DisplayName;
             UIManager.instance.showLogoutUI();
         }
     }

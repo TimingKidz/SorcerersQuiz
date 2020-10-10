@@ -31,6 +31,7 @@ public class GenerateQuestion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (chkRound.GetComponent<CheckRound>().round != 0)
         {
             round = chkRound.GetComponent<CheckRound>().round;

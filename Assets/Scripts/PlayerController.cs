@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         speed = defaultSpeed;
         controller = GetComponent<CharacterController>();
-        CalibrateAccelerometer();
+        /*CalibrateAccelerometer();*/
         /*        Init.x = Input.acceleration.x;
                 Init.y = Input.acceleration.y;*/
         //Input.gyro.enabled = true;
@@ -62,18 +62,18 @@ public class PlayerController : MonoBehaviour
         // float posX = Input.gyro.attitude.x;
         // float posY = Input.gyro.attitude.y;
 
-        /*float posX = Input.GetAxis("Horizontal") * rotateSpeed;
-        float posY = Input.GetAxis("Vertical") * vSpeed;*/
+        float posX = Input.GetAxis("Horizontal") * rotateSpeed;
+        float posY = Input.GetAxis("Vertical") * vSpeed;
 
-        theAcceleration = Input.acceleration - new Vector3(0, accelerationSnapshot.y, 0);
+       /* theAcceleration = Input.acceleration - new Vector3(0,accelerationSnapshot.y,0);*/
 
         /*
                 float posX = Input.acceleration.x * accelerationSpeed;
                 float posY = Input.acceleration.y * accelerationSpeed;*/
-
-        float posX = theAcceleration.x * 150.0f;
-        float posY = theAcceleration.y * 50.0f;
-        Direction = new Vector3(0, -posY, speed);
+       
+       /* float posX = theAcceleration.x * 150.0f;
+        float posY = theAcceleration.y * 50.0f;*/
+        Direction = new Vector3(0, posY, speed);
         //controller.Move(Direction * Time.deltaTime);
         Direction = transform.TransformDirection(Direction);
         transform.Rotate(0, posX*Time.deltaTime, 0);
@@ -89,6 +89,11 @@ public class PlayerController : MonoBehaviour
         isStunt = true;
     }
 
+    public void setzero()
+    {
+        defaultSpeed = 0.0f;
+    }
+    
     public void Boost()
     {
         cTime = Time.time;
