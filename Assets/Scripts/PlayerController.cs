@@ -92,6 +92,8 @@ public class PlayerController : MonoBehaviour
     public void setzero()
     {
         defaultSpeed = 0.0f;
+        isStunt = false;
+        isBoost = false;
     }
     
     public void Boost()

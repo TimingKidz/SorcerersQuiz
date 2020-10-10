@@ -20,7 +20,7 @@ public class Client : SocketIOComponent
     [SerializeField]
     private GameObject playerPrefeb;
     private Dictionary<string, GameObject> serverObjects;
-    private Dictionary<string, NetworkIdentity> serverNet;
+    public Dictionary<string, NetworkIdentity> serverNet;
     public GameObject NubText;
     public GameObject PlayUI;
 
@@ -171,6 +171,9 @@ public class Client : SocketIOComponent
         On("finish", (E) =>
         {
             range = int.Parse(E.data["No"].ToString());
+            string a = "[sever object parent]/" + ClientId + "/Camera";
+            GameObject cam = GameObject.Find(a);
+            cam.SetActive(false);
         });
 
     }

@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CheckRound : MonoBehaviour
 {
     public GameObject gobj;
     public GameObject wallstart;
+    public GameObject EndCanvas;
+    public Text rank;
     public int round;
     private NetworkIdentity networkIdentity;
     Client client;
@@ -38,6 +41,9 @@ public class CheckRound : MonoBehaviour
                 Debug.Log("sssss");
                 GameObject.FindWithTag("Player").GetComponent<PlayerController>().setzero();
                 networkIdentity.GetIsSocket().Emit("finish");
+                GameObject.Find("Playing/SlowButton").SetActive(false);
+                GameObject.Find("Playing/BoostButton").SetActive(false);
+                EndCanvas.SetActive(true);
                 isfin = true;
             }
         }
@@ -45,6 +51,22 @@ public class CheckRound : MonoBehaviour
         if (client.range != -1)
         {
             Debug.Log(client.range);
+            if (client.range == 1)
+            {
+                rank.text = "1st";
+            }
+            else if (client.range == 2)
+            {
+                rank.text = "2nd";
+            }
+            else if (client.range == 3)
+            {
+                rank.text = "3rd";
+            }
+            else
+            {
+                rank.text = client.range + "th";
+            }
         }
     }
 
