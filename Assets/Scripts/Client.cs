@@ -21,7 +21,8 @@ public class Client : SocketIOComponent
     private GameObject playerPrefeb;
     private Dictionary<string, GameObject> serverObjects;
     private Dictionary<string, NetworkIdentity> serverNet;
-    public Text NubText;
+    public GameObject NubText;
+    public GameObject PlayUI;
 
     public List<List<string>> Quiz;
     public List<List<string>> Ans;
@@ -55,11 +56,11 @@ public class Client : SocketIOComponent
             nub = (time - miliTime)/1000;
             if(nub > 0)
             {
-                NubText.text = nub.ToString();
+                NubText.GetComponent<Text>().text = nub.ToString();
             }
             else
             {
-                NubText.text = "";
+                NubText.SetActive(false);
             }
             
             if ( miliTime >= time && chk)
@@ -126,6 +127,8 @@ public class Client : SocketIOComponent
                 playerObject.tag = "Player";
                 GameObject.Find(f).SetActive(false);
                 cam.SetActive(true);
+                GameObject.Find("Loading").SetActive(false);
+                PlayUI.SetActive(true);
             }
 
         });
