@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 
 public class ReducedSpeed : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    PlayerController playerController;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,18 +17,20 @@ public class ReducedSpeed : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     // Update is called once per frame
     void Update()
     {
-        float PSpeed = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().speed;
+        
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        float PSpeed = playerController.speed;
         if (!ispressed)
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().speed = 
-                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().defaultSpeed;
+            playerController.speed =
+                playerController.defaultSpeed;
             return;
         }            
         // DO SOMETHING HERE        
         if (PSpeed >= 5.0f)
         {
             PSpeed -= 0.1f;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().speed = PSpeed;
+            playerController.speed = PSpeed;
         }
     }
 
